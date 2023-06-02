@@ -1,38 +1,23 @@
-public class Filme {
-    // classe vai espificar o que o filme tem, coisas comuns
-    // um protótipo do filme
-    String nome;   //"os filmes cada um tem um nome"
-    int anoDeLancamento;
-    boolean incluidoNoPlano;
-    private double somaDasAvaliacoes;    //private é um modificador de acesso, impede que altere o valor pelo main
-    private int totalDeAvaliacoes;
-    int duracaoEmMinutos;
+package br.com.alura.screenmatch.modelos;
 
-    //metodo acessor. Por estar no privado ele visualiza o valores privados
-    // ajuda no encapsulamento do código
-    int getTotalDeAvaliacoes(){
-        return totalDeAvaliacoes;
+
+import br.com.alura.screenmatch.calculo.Classificavel;
+
+// o filme tem tudo que o titulo tem e ela vai heradr isso HERANÇA usando extends o filme é um titulo
+// tudo que o titulo tem e mais o diretor
+public class Filme extends Titulo implements Classificavel {
+    private String diretor;
+
+    public String getDiretor() {
+        return diretor;
     }
 
-    //MÉTODO
-    // Como se fosse uma função dentro da clsse... " a maneira de fazer algo"
-    // só fazer alguma coisa sem retorno chama o void
-    void exibeFichaTecnica(){
-        System.out.println("Nome do filme: " +nome);
-        System.out.println("Ano de lançamento: " +anoDeLancamento);
-        System.out.println("Duração em minutos: " +duracaoEmMinutos);
-        System.out.println("Incluído no plano: " +incluidoNoPlano);
+    public void setDiretor(String diretor) {
+        this.diretor = diretor;
     }
 
-    void avalia(double nota){
-        somaDasAvaliacoes += nota;
-        totalDeAvaliacoes++;
+    @Override
+    public int getClassificacao() {
+        return (int) pegaMedia() / 2;
     }
-
-    double pegaMedia(){
-        return somaDasAvaliacoes/totalDeAvaliacoes;
-    }
-
-
-
 }
