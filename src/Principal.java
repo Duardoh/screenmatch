@@ -4,6 +4,8 @@ import br.com.alura.screenmatch.modelos.Episodio;
 import br.com.alura.screenmatch.modelos.Filme;
 import br.com.alura.screenmatch.modelos.Serie;
 
+import java.util.ArrayList;
+
 public class Principal {
     public static void main(String[] args) {      // instanciação de objetos
         Filme meuFilme = new Filme();             //tipo referencia para os atributos
@@ -47,5 +49,19 @@ public class Principal {
         episodio.setSerie(lost);
         episodio.setTotalVisualizacoes(300);
         filtro.filtra(episodio);
+
+        //Filme terceiroFilme = new Filme();
+        var terceiroFilme = new Filme();
+        terceiroFilme.setNome("Wall-e");
+        terceiroFilme.setDuracaoEmMinutos(170);
+        terceiroFilme.setAnoDeLancamento(2008);
+        terceiroFilme.avalia(10);
+
+        ArrayList<Filme> listaDeFilmes = new ArrayList<>();
+        listaDeFilmes.add(terceiroFilme);
+        listaDeFilmes.add(meuFilme);
+        listaDeFilmes.add(outroFilme);
+        System.out.println("Tamanho da lista " + listaDeFilmes.size());
+        System.out.println("Primeiro filme: " + listaDeFilmes.get(0).getNome());
     }
 }
